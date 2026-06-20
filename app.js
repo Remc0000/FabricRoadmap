@@ -385,22 +385,11 @@
   };
 
   const loadData = async () => {
-    let raw = null;
-    const sources = ["/api/roadmap-data", "./data/roadmap-data.json"];
-    let lastError = null;
-    for (const source of sources) {
-      try {
-        const response = await fetch(source, { cache: "no-store" });
-        if (!response.ok) {
-          throw new Error(`Failed to load roadmap data from ${source}: ${response.status}`);
-        }
-        raw = await response.json();
-        break;
-      } catch (error) {
-        lastError = error;
-      }
+    const response = await fetch("./data/roadmap-data.json", { cache: "no-store" });
+    if (!response.ok) {
+      throw new Error(`Failed to load roadmap data: ${response.status}`);
     }
-    if (!raw) throw lastError || new Error("Failed to load roadmap data.");
+    const raw = await response.json();
     state.items = raw.map((item) => {
       const rawReleaseType = item.releaseType ?? "";
       const rawReleaseStatus = item.releaseStatus ?? "";
