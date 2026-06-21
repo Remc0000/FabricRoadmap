@@ -310,7 +310,11 @@ export function HomePage() {
 
     async function loadData() {
       try {
-        const response = await fetch('/data/roadmap-data.json', { cache: 'no-store' });
+        const dataUrl = new URL(
+          'data/roadmap-data.json',
+          `${window.location.origin}${import.meta.env.BASE_URL}`
+        ).toString();
+        const response = await fetch(dataUrl, { cache: 'no-store' });
         if (!response.ok) {
           throw new Error(`Failed to load roadmap data: ${response.status}`);
         }
