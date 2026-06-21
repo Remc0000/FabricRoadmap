@@ -5,3 +5,7 @@ dist/
 *.tsbuildinfo
 .DS_Store
 Thumbs.db
+rayfin/.env
+rayfin/.deployments.json
+rayfin/.lockfile.json
+rayfin/.temp/
