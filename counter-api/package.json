@@ -1,0 +1,13 @@
+{
+  "name": "fabric-roadmap-counter",
+  "private": true,
+  "version": "1.0.0",
+  "main": "counter/index.js",
+  "scripts": {
+    "start": "func start"
+  },
+  "dependencies": {
+    "@azure/data-tables": "^13.3.0",
+    "@azure/identity": "^4.6.0"
+  }
+}
